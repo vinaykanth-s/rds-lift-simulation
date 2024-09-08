@@ -1,0 +1,145 @@
+
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin-top: 20px;
+      color: #333;
+    }
+    
+    form {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .input-box {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      font-size: 18px;
+      margin-right: 10px;
+      color: #333;
+    }
+    
+    input[type="number"] {
+      padding: 8px;
+      width: 200px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    button:hover {
+      background-color: #218838;
+    }
+    
+    #layout {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      margin-top: 20px;
+    }
+    
+    .floor {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      height: 100px;
+      border-bottom: 1px solid black;
+    }
+    
+  
+    .lift {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      background-color: grey;
+      overflow: hidden; 
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    
+    .left-door,
+    .right-door {
+      position: absolute;
+      width: 50px;
+      height: 100%;
+      background-color: #999; 
+      transition: transform 2.5s;
+      border-radius: 2px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    }
+    
+    .left-door {
+      left: 0;
+    }
+    
+    .right-door {
+      right: 0;
+    }
+    
+    .door-open.left-door {
+      transform: translateX(-50px);
+    }
+    
+    .door-open.right-door {
+      transform: translateX(50px);
+    }
+    
+    .door-close.left-door {
+      transform: translateX(0);
+    }
+    
+    .door-close.right-door {
+      transform: translateX(0);
+    }
+    
+    .lift-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .lift-control {
+      padding: 5px;
+      cursor: pointer;
+    }
+    
+    .lifts {
+      display: flex;
+      gap: 10px;
+    }
+    
+    @media (max-width: 768px) {
+      .floor {
+        height: 70px;
+      }
+      .lift {
+        width: 70px;
+        height: 70px;
+      }
+    }
+    
