@@ -13,6 +13,12 @@ function generateLayout(e) {
   let liftInput = document.querySelector("#lift-count");
   let floorCount = Number(floorInput.value);
   let liftCount = Number(liftInput.value);
+
+  if (floorCount <= 0 || liftCount <= 0) {
+    alert("Please enter a value greater than 0 for both lifts and floors.");
+    return;
+  }
+
   lifts = [];
   queue = [];
   clearInterval(intervalId);
