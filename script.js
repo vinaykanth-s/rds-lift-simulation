@@ -98,7 +98,7 @@ function moveLift(floorRequest) {
   const lift = lifts.find((lift) => lift.id === liftId);
   if (!lift.isBusy) {
     const liftEl = document.getElementById(lift.id);
-    const targetY = (floorRequest.floorNumber - 1) * -100;
+    const targetY = (floorRequest.floorNumber - 1) * -101;
     const timeToMove =
       Math.abs(floorRequest.floorNumber - lift.currentFloor) * 2;
 
