@@ -1,7 +1,6 @@
 let lifts = [];
 let queue = [];
-let noOfFloors;
-let noOfLifts;
+let activeRequests = {};
 let intervalId;
 
 let btn = document.getElementById("generate-btn");
@@ -21,6 +20,7 @@ function generateLayout(e) {
 
   lifts = [];
   queue = [];
+  activeRequests = {};
   clearInterval(intervalId);
   generateFloorsAndLifts(floorCount, liftCount);
 
@@ -71,12 +71,20 @@ function generateFloorsAndLifts(floorCount, liftCount) {
 }
 
 function createButton(floorNumber, direction) {
-  return `<button class="lift-control ${direction}" onclick="queue.push({floorNumber: ${floorNumber}, buttonClicked: '${direction}'})">${
+  return `<button class="lift-control ${direction}" onclick="addFloorRequest(${floorNumber}, '${direction}')">${
     direction.charAt(0).toUpperCase() + direction.slice(1)
   }</button>`;
 }
 
 function addFloorRequest(floorNumber, direction) {
+  // To Check if there's already an active request for this floor and direction
+  if (activeRequests[`${floorNumber}-${direction}`]) {
+    return; // Skip if request is already active
+  }
+
+  // Mark the request as active for the given floor and direction
+  activeRequests[`${floorNumber}-${direction}`] = true;
+
   queue.push({ floorNumber, buttonClicked: direction });
 }
 
@@ -108,6 +116,9 @@ function moveLift(floorRequest) {
     setTimeout(() => {
       lift.isBusy = false;
       lift.movingDirection = null;
+      delete activeRequests[
+        `${floorRequest.floorNumber}-${floorRequest.buttonClicked}`
+      ];
     }, timeToMove * 1000 + 5000);
   }
 }

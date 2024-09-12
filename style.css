@@ -133,13 +133,3 @@
       gap: 10px;
     }
     
-    @media (max-width: 768px) {
-      .floor {
-        height: 70px;
-      }
-      .lift {
-        width: 70px;
-        height: 70px;
-      }
-    }
-    
